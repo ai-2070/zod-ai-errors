@@ -58,50 +58,53 @@ function isCustomMessage(issue: ZodIssue): boolean {
   const defaultPatterns = [
     // Core error patterns
     /^Invalid input/,
-    /^Invalid type:/,
+    /^Invalid option:/,
     /^Too small:/,
     /^Too big:/,
-    /^Invalid option:/,
     /^Unrecognized key/,
 
-    // String format patterns
-    /^Invalid string:/,
-    /^Invalid number:/,
+    // String format patterns (invalid_format with starts_with/ends_with/includes/regex)
+    /^Invalid string: must start with/,
+    /^Invalid string: must end with/,
+    /^Invalid string: must include/,
+    /^Invalid string: must match pattern/,
 
-    // Specific format validations
-    /^Invalid email/i,
-    /^Invalid url/i,
-    /^Invalid uuid/i,
-    /^Invalid cuid/i,
-    /^Invalid cuid2/i,
-    /^Invalid ulid/i,
-    /^Invalid regex/i,
-    /^Invalid datetime/i,
-    /^Invalid date/i,
-    /^Invalid time/i,
-    /^Invalid duration/i,
-    /^Invalid ip/i,
-    /^Invalid cidr/i,
-    /^Invalid base32/i,
-    /^Invalid base64/i,
-    /^Invalid json pointer/i,
-    /^Invalid relative json pointer/i,
-    /^Invalid uri/i,
-    /^Invalid jwt/i,
-    /^Invalid emoji/i,
-    /^Invalid nanoid/i,
-    /^Invalid mac/i,
-    /^Invalid iso/i,
-    /^Invalid e\.?164/i,
-    /^Invalid bic/i,
-    /^Invalid iban/i,
+    // Number format pattern (not_multiple_of)
+    /^Invalid number: must be a multiple of/,
 
-    // Additional patterns
-    /^Invalid key in/,
-    /^Invalid value in/,
-    /^Invalid union/,
-    /^Invalid format/,
-    /^Required/,
+    // Key/element errors
+    /^Invalid key in /,
+    /^Invalid value in /,
+
+    // Format validations (Nouns from en.ts)
+    /^Invalid input$/, // regex format
+    /^Invalid email address$/,
+    /^Invalid URL$/,
+    /^Invalid emoji$/,
+    /^Invalid UUID$/,
+    /^Invalid UUIDv4$/,
+    /^Invalid UUIDv6$/,
+    /^Invalid nanoid$/,
+    /^Invalid GUID$/,
+    /^Invalid cuid$/,
+    /^Invalid cuid2$/,
+    /^Invalid ULID$/,
+    /^Invalid XID$/,
+    /^Invalid KSUID$/,
+    /^Invalid ISO datetime$/,
+    /^Invalid ISO date$/,
+    /^Invalid ISO time$/,
+    /^Invalid ISO duration$/,
+    /^Invalid IPv4 address$/,
+    /^Invalid IPv6 address$/,
+    /^Invalid MAC address$/,
+    /^Invalid IPv4 range$/,
+    /^Invalid IPv6 range$/,
+    /^Invalid base64-encoded string$/,
+    /^Invalid base64url-encoded string$/,
+    /^Invalid JSON string$/,
+    /^Invalid E\.164 number$/,
+    /^Invalid JWT$/,
   ];
 
   return !defaultPatterns.some((pattern) => pattern.test(msg));
