@@ -1,0 +1,45 @@
+{
+  "name": "zod-error-windows",
+  "version": "1.0.0",
+  "description": "Beautiful, AI-friendly Zod error formatting with Rust-style diagnostics",
+  "license": "Apache-2.0",
+  "author": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "example": "npx tsx examples/01-basic.ts",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "@vitest/ui": "^4.0.0",
+    "prettier": "^3.7.0",
+    "tsx": "^4.21.0",
+    "typescript": "5.9.3",
+    "vitest": "^4.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "zod",
+    "validation",
+    "error",
+    "formatting",
+    "diagnostic",
+    "ai",
+    "llm"
+  ]
+}
