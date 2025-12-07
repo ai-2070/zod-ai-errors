@@ -54,23 +54,54 @@ function isCustomMessage(issue: ZodIssue): boolean {
   const msg = issue.message;
   if (!msg) return false;
 
-  // Zod v4 default message patterns
+  // Zod v4 default message patterns (from en.ts locale)
   const defaultPatterns = [
+    // Core error patterns
+    /^Invalid input/,
+    /^Invalid type:/,
     /^Too small:/,
     /^Too big:/,
-    /^Invalid input:/,
-    /^Invalid type:/,
-    /^Invalid enum value/,
-    /^Invalid value:/,
-    /^Invalid format:/,
-    /^Invalid string:/,
-    /^Invalid date/,
-    /^Invalid union/,
+    /^Invalid option:/,
     /^Unrecognized key/,
-    /^Required/,
-    /^Invalid email/,
+
+    // String format patterns
+    /^Invalid string:/,
+    /^Invalid number:/,
+
+    // Specific format validations
+    /^Invalid email/i,
     /^Invalid url/i,
     /^Invalid uuid/i,
+    /^Invalid cuid/i,
+    /^Invalid cuid2/i,
+    /^Invalid ulid/i,
+    /^Invalid regex/i,
+    /^Invalid datetime/i,
+    /^Invalid date/i,
+    /^Invalid time/i,
+    /^Invalid duration/i,
+    /^Invalid ip/i,
+    /^Invalid cidr/i,
+    /^Invalid base32/i,
+    /^Invalid base64/i,
+    /^Invalid json pointer/i,
+    /^Invalid relative json pointer/i,
+    /^Invalid uri/i,
+    /^Invalid jwt/i,
+    /^Invalid emoji/i,
+    /^Invalid nanoid/i,
+    /^Invalid mac/i,
+    /^Invalid iso/i,
+    /^Invalid e\.?164/i,
+    /^Invalid bic/i,
+    /^Invalid iban/i,
+
+    // Additional patterns
+    /^Invalid key in/,
+    /^Invalid value in/,
+    /^Invalid union/,
+    /^Invalid format/,
+    /^Required/,
   ];
 
   return !defaultPatterns.some((pattern) => pattern.test(msg));
