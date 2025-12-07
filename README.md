@@ -70,7 +70,7 @@ const jsonInput = `{
 }`;
 
 const result = parseJson(jsonInput, UserSchema, {
-  filename: 'user.json',
+  filename: 'user.json', // label (optional)
 });
 
 if (!result.success) {
