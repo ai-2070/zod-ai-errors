@@ -1,4 +1,4 @@
-# zod-error-windows
+# Zod AI Errors
 
 Beautiful, AI-friendly Zod error formatting with Rust-style diagnostics.
 
@@ -44,7 +44,7 @@ error[ZOD002]: type mismatch for field `user.age`
 ## Installation
 
 ```bash
-npm install zod-error-windows zod
+npm install @ai2070/zod-ai-errors zod
 ```
 
 Requires Zod v4.
@@ -55,7 +55,7 @@ Requires Zod v4.
 
 ```typescript
 import { z } from 'zod';
-import { parseJson } from 'zod-error-windows';
+import { parseJson } from '@ai2070/zod-ai-errors';
 
 const UserSchema = z.object({
   name: z.string().min(2),
@@ -85,7 +85,7 @@ If you already have a `ZodError` from a previous validation:
 
 ```typescript
 import { z } from 'zod';
-import { formatZodError } from 'zod-error-windows';
+import { formatZodError } from '@ai2070/zod-ai-errors';
 
 const schema = z.object({ name: z.string().min(1) });
 const result = schema.safeParse(JSON.parse(jsonString));
@@ -103,7 +103,7 @@ if (!result.success) {
 
 ```typescript
 import { z } from 'zod';
-import { createValidator } from 'zod-error-windows';
+import { createValidator } from '@ai2070/zod-ai-errors';
 
 const ConfigSchema = z.object({
   port: z.number().min(1).max(65535),
