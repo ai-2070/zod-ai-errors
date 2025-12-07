@@ -46,7 +46,7 @@ export function renderDiagnostic(
   sourceMap: JsonSourceMap,
   options: RenderOptions = {},
 ): string {
-  const { colors = true, filename = "input.json", contextLines = 4 } = options;
+  const { colors = true, filename = "", contextLines = 4 } = options;
   const c = colors ? ansiColors : noColors;
 
   const lines: string[] = [];

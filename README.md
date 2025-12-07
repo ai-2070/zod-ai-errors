@@ -170,7 +170,7 @@ Creates a reusable validator function.
 
 ```typescript
 interface FormatOptions {
-  // Filename to display in error locations (default: 'input.json')
+  // Filename to display in error locations (default: '')
   filename?: string;
   
   // Enable ANSI colors (default: true)
