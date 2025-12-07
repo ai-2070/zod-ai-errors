@@ -92,7 +92,7 @@ const result = schema.safeParse(JSON.parse(jsonString));
 
 if (!result.success) {
   const formatted = formatZodError(result.error, jsonString, {
-    filename: 'config.json',
+    filename: 'config.json', // label (optional)
     colors: true,
   });
   console.log(formatted);
@@ -111,7 +111,7 @@ const ConfigSchema = z.object({
 });
 
 const validateConfig = createValidator(ConfigSchema, {
-  filename: 'config.json',
+  filename: 'config.json', // label (optional)
   colors: true,
 });
 
