@@ -46,10 +46,45 @@ function describeValue(value: unknown): string {
 
 type ZodIssue = z.core.$ZodIssue;
 
+/**
+ * Checks if the issue message is a custom user-provided message
+ * rather than a Zod default message.
+ */
+function isCustomMessage(issue: ZodIssue): boolean {
+  const msg = issue.message;
+  if (!msg) return false;
+
+  // Zod v4 default message patterns
+  const defaultPatterns = [
+    /^Too small:/,
+    /^Too big:/,
+    /^Invalid input:/,
+    /^Invalid type:/,
+    /^Invalid enum value/,
+    /^Invalid value:/,
+    /^Invalid format:/,
+    /^Invalid string:/,
+    /^Invalid date/,
+    /^Invalid union/,
+    /^Unrecognized key/,
+    /^Required/,
+    /^Invalid email/,
+    /^Invalid url/i,
+    /^Invalid uuid/i,
+  ];
+
+  return !defaultPatterns.some((pattern) => pattern.test(msg));
+}
+
 function generateHelp(
   issue: ZodIssue,
   receivedValue: unknown,
 ): string | undefined {
+  // If there's a custom message, use it as the help text
+  if (isCustomMessage(issue)) {
+    return issue.message;
+  }
+
   const code = issue.code;
 
   switch (code) {

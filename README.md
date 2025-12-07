@@ -39,6 +39,7 @@ error[ZOD002]: type mismatch for field `user.age`
   - Underlined error locations with `^^^`
   - Actionable help suggestions (`= help: ...`)
 - **ANSI color support** — Colorized output for terminal display (can be disabled)
+- **Compact mode** — Display all errors in a single window for a condensed view
 - **AI-friendly** — Structured output that's easy for LLMs to parse and act on
 
 ## Installation
@@ -124,6 +125,37 @@ if (!result.success) {
 // result.data is typed as { port: number; host: string }
 ```
 
+### Compact Mode
+
+Use `compact: true` to display all errors in a single window instead of separate windows for each error:
+
+```typescript
+const result = parseJson(jsonInput, UserSchema, {
+  filename: 'user.json',
+  compact: true,
+});
+```
+
+Output:
+
+```
+error: found 3 errors
+  --> user.json:3:13
+  |
+2 |   "user": {
+3 |     "name": "",
+  |             ^^ expected a non-empty string (min 2 chars), found string ""
+4 |     "age": "sixteen",
+  |            ^^^^^^^^^ expected number, found string "sixteen"
+5 |     "email": "not-an-email"
+  |              ^^^^^^^^^^^^^^ expected a valid email, found string "not-an-email"
+6 |   }
+  |
+  = help: provide a string with at least 2 characters
+  = help: convert the string "sixteen" to a number
+  = help: provide a valid email address (e.g., user@example.com)
+```
+
 ## API
 
 ### `parseJson(jsonString, schema, options?)`
@@ -181,6 +213,9 @@ interface FormatOptions {
   
   // Throw an error instead of returning ValidationError (default: false)
   throw?: boolean;
+  
+  // Display all errors in a single compact window (default: false)
+  compact?: boolean;
 }
 ```
 
