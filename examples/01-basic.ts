@@ -3,7 +3,7 @@
  */
 
 import { z } from "zod";
-import { parseJson } from "../src/index.js";
+import { parseJson } from "../src/index";
 
 // Define a schema with various validations
 const UserSchema = z.object({
