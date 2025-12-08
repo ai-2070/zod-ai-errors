@@ -2,6 +2,8 @@
 
 Beautiful, AI-friendly Zod error formatting with Rust-style diagnostics.
 
+> Your LLMs struggling to interpret Zod errors? Try Zod AI Errors!
+
 ```
 error[ZOD001]: invalid value for field `user.name`
   --> input.json:3:13
