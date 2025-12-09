@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Beautiful, AI-friendly Zod error formatting with Rust-style diagnostics",
   "license": "Apache-2.0",
-  "author": "",
+  "author": "AI2070 Contributors",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
